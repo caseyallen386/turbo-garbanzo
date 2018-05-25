@@ -4,15 +4,16 @@ var configFile;
 if (process.env.NODE_ENV === 'Production'){
     configFile = './config.json';
 } else {
-    configFile = './config.dev.json';
+    configFile = './config.dev.js';
 }
  
 var config = require(configFile);
+var db = config.db;
 
 module.exports = {
-    db : config.db,
-    google : config.GoogleOAuth.Web,
-    DbConnectString : function() {
+    GoogleOAuth : config.GoogleOAuth,
+    cookie : config.cookie,
+    DbConnect : function() {
         return util.format( db.conn, db.user, db.pass, db.uri );
     }
 }

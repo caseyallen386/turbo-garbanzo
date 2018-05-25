@@ -1,12 +1,24 @@
-<% include shared/header %>
+<% include shared/header  %>
     
-    <div>
-        <form action="/login">
-            <label>Username/Email: </label>
-            <input type="text" id="User" name="username">
-            <label>Password: </label>
-            <input type="password" id="Password" name="password">
-        </form>
-    </div>
+    <div id="login-page">   
+        <div class="login-wrapper"> 
+            <div class="login-header">
+                <a href="/login/auth/google" id="login-with=google">Login With Google</a>
+            </div>
 
+            <form action="/login">
+                <div class="field-wrap">
+                    <label>Username/Email: </label>
+                    <input type="text" id="User" name="username">
+                </div>
+                <div class="field-wrap">
+                    <label>Password: </label>
+                    <input type="password" id="Password" name="password">
+                </div>
+                <div class="field-wrap">
+                    <input type="submit" value="Log In">
+                </div>
+            </form>
+        </div>
+    </div>
 <% include shared/footer %>

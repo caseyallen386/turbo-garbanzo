@@ -1,6 +1,6 @@
-var goose = require('mongoose');
+var Mongoose = require('mongoose');
 
-var Schema = goose.Schema;
+var { Schema } = Mongoose;
 
 var todoSchema = new Schema({
     user : String,
@@ -9,4 +9,4 @@ var todoSchema = new Schema({
     hasAttachment : Boolean
 });
 
-module.exports = goose.model("todo", todoSchema);
+module.exports = Mongoose.model("todo", todoSchema);

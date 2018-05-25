@@ -1,5 +1,6 @@
 var express = require("express");
 var routes = express.Router();
+var mongoose = require('mongoose');
 var Todos = require("../models/todoModel");
 
 routes.get("/todos/user/:user", function(req, res) {
@@ -15,14 +16,14 @@ routes.get("/todos/id/:id", function(req, res) {
 });
 
 routes.post("/todos", function(req, res) {
-    if (req.body.id) {
-        Todos.findByIdAndUpdate({_id: req.body.id}, req.body, function(err, responce) {
+    if (req.user) {
+        Todos.findByIdAndUpdate({_id: req.user.id}, req.body, function(err, responce) {
             res.send(responce);
         });
     }
     else {
         var newTodo = Todos({
-            user : req.params.user,
+            user : req.user.id,
             tast : req.params.task,
             isDone: req.params.isDone,
             hasAttachment : req.params.hasAttachment
